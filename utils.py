@@ -49,13 +49,13 @@ def load_fashion_mnist(batch_size, is_training=True):
         loaded = np.fromfile(file=fd, dtype=np.uint8)
         trainY = loaded[8:].reshape((60000)).astype(np.int32)
 
-        trX = trainX[:55000] / 255.
-        trY = trainY[:55000]
+        trX = trainX / 255.
+        trY = trainY
 
         valX = trainX[55000:, ] / 255.
         valY = trainY[55000:]
 
-        num_tr_batch = 55000 // batch_size
+        num_tr_batch = 60000 // batch_size
         num_val_batch = 5000 // batch_size
 
         return trX, trY, num_tr_batch, valX, valY, num_val_batch
